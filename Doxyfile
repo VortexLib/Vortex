@@ -1,0 +1,74 @@
+# Doxyfile for Vortex - VEX V5 Odometry Template
+
+PROJECT_NAME           = "Vortex"
+PROJECT_NUMBER         = "3.2.2"
+PROJECT_BRIEF          = "VEX V5 Odometry Template for PROS"
+PROJECT_LOGO           =
+OUTPUT_DIRECTORY       = docs/build
+
+# Input
+INPUT                  = include/Vortex docs/pages
+FILE_PATTERNS          = *.hpp *.h *.md
+RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = docs/pages/mainpage.md
+EXCLUDE_PATTERNS       = */okapi/* */pros/* */liblvgl/*
+
+# Extraction
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = NO
+
+# Source browsing
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+STRIP_CODE_COMMENTS    = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# Output
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+GENERATE_XML           = NO
+HTML_OUTPUT            = html
+HTML_EXTRA_STYLESHEET  = docs/custom.css
+HTML_COLORSTYLE_HUE    = 120
+HTML_COLORSTYLE_SAT    = 150
+HTML_COLORSTYLE_GAMMA  = 100
+HTML_TIMESTAMP         = YES
+SEARCHENGINE           = YES
+DISABLE_INDEX          = NO
+GENERATE_TREEVIEW      = YES
+FULL_SIDEBAR           = NO
+
+# Preprocessing
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = NO
+PREDEFINED             =
+
+# Diagrams
+HAVE_DOT               = NO
+CLASS_DIAGRAMS         = YES
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = NO
+INCLUDE_GRAPH          = NO
+INCLUDED_BY_GRAPH      = NO
+
+# Warnings
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = NO
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = NO
+
+# Other
+JAVADOC_AUTOBRIEF      = YES
+AUTOLINK_SUPPORT       = YES
+BUILTIN_STL_SUPPORT    = YES
+DISTRIBUTE_GROUP_DOC   = YES
+FULL_PATH_NAMES        = NO
+TAB_SIZE               = 2
+MARKDOWN_SUPPORT       = YES
+TOC_INCLUDE_HEADINGS   = 4
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = YES
+ALPHABETICAL_INDEX     = YES

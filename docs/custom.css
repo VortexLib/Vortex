@@ -1,0 +1,51 @@
+/* Vortex Green theme overrides for Doxygen */
+
+:root {
+  --vortex-green: #00cc44;
+  --vortex-green-dark: #009933;
+  --vortex-bg: #1a1a2e;
+  --vortex-surface: #16213e;
+}
+
+/* Navigation bar */
+#titlearea, .sm-dox, .sm-dox a {
+  background: var(--vortex-surface) !important;
+}
+
+/* Links */
+a, a:visited {
+  color: var(--vortex-green) !important;
+}
+a:hover {
+  color: var(--vortex-green-dark) !important;
+}
+
+/* Selected tree item */
+#nav-tree .selected {
+  background-image: none !important;
+  background-color: var(--vortex-green-dark) !important;
+}
+
+/* Code blocks */
+div.fragment, pre.fragment {
+  border-left: 3px solid var(--vortex-green);
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+/* Member declarations */
+.memItemLeft, .memItemRight, .memTemplItemLeft, .memTemplItemRight {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Table of contents */
+div.toc {
+  border-left: 3px solid var(--vortex-green);
+  background-color: #f0f7f0;
+}
+
+/* Header */
+.title {
+  color: var(--vortex-green-dark);
+}

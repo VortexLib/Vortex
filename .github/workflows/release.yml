@@ -23,7 +23,11 @@ jobs:
 
       - name: Get version from tag
         id: version
-        run: echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          VER="${TAG#v}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "ver=$VER" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -33,7 +37,13 @@ jobs:
           body: |
             ## Installation
 
-            ### Option 1: PROS CLI
+            ### Option 1: Depot (Recommended)
+            ```bash
+            pros c add-depot Vortex https://raw.githubusercontent.com/VortexLib/Vortex/depot/stable.json
+            pros c apply Vortex
+            ```
+
+            ### Option 2: Direct Download
             ```bash
             curl -LO https://github.com/${{ github.repository }}/releases/download/${{ steps.version.outputs.tag }}/${{ steps.build.outputs.name }}.zip
             pros c fetch ${{ steps.build.outputs.name }}.zip
@@ -41,14 +51,58 @@ jobs:
             rm ${{ steps.build.outputs.name }}.zip
             ```
 
-            ### Option 2: Manual
-            1. Download the `.zip` file below
-            2. Run `pros c fetch Vortex@<version>.zip`
-            3. Run `pros c apply Vortex` in your project
-
             ---
             See the [documentation](https://vortexlib.github.io/Vortex/) for usage guides.
           files: ${{ github.workspace }}/template/*
           draft: false
           prerelease: false
           generate_release_notes: true
+
+      - name: Update depot stable.json
+        run: |
+          VER="${{ steps.version.outputs.ver }}"
+          TAG="${{ steps.version.outputs.tag }}"
+          REPO="${{ github.repository }}"
+
+          # Checkout depot branch into a temp dir
+          git clone --branch depot --single-branch "https://x-access-token:${{ github.token }}@github.com/${REPO}.git" depot-tmp
+
+          cd depot-tmp
+
+          # Read existing depot JSON, add new version entry if not already present
+          python3 -c "
+          import json, sys
+
+          with open('stable.json', 'r') as f:
+              data = json.load(f)
+
+          # Check if version already exists
+          for entry in data:
+              if entry.get('version') == '${VER}':
+                  print(f'Version ${VER} already in depot, skipping.')
+                  sys.exit(0)
+
+          # Add new version at the beginning
+          new_entry = {
+              'py/object': 'pros.conductor.templates.base_template.BaseTemplate',
+              'name': 'Vortex',
+              'version': '${VER}',
+              'target': 'v5',
+              'supported_kernels': '^4.1.0',
+              'metadata': {
+                  'location': 'https://github.com/${REPO}/releases/download/${TAG}/Vortex@${VER}.zip'
+              }
+          }
+          data.insert(0, new_entry)
+
+          with open('stable.json', 'w') as f:
+              json.dump(data, f, indent=2)
+              f.write('\n')
+
+          print(f'Added version ${VER} to depot.')
+          "
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stable.json
+          git diff --cached --quiet || (git commit -m "Add Vortex ${TAG} to stable depot" && git push)
