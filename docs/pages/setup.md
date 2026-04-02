@@ -22,7 +22,7 @@ pros c apply Vortex
 Download the latest release from [GitHub Releases](https://github.com/VortexLib/Vortex/releases), then:
 
 ```bash
-pros c fetch Vortex@3.2.2.zip
+pros c fetch Vortex@0.0.1.zip
 pros c apply Vortex
 ```
 

@@ -18,7 +18,7 @@ assignees: ''
 ## Versions
 <!-- Run `pros conduct info-project` to see what versions you're running. -->
 PROS Kernel Version: <!-- eg. 4.1.0 -->
-Vortex Version: <!-- eg. v3.2.2 -->
+Vortex Version: <!-- eg. v0.0.1 -->
 Other Libraries: <!-- eg. OkapiLib, etc. -->
 
 ## OPTIONAL: Additional Information

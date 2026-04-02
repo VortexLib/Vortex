@@ -1,9 +1,9 @@
 # Doxyfile for Vortex - VEX V5 Odometry Template
 
 PROJECT_NAME           = "Vortex"
-PROJECT_NUMBER         = "3.2.2"
+PROJECT_NUMBER         = "0.0.1"
 PROJECT_BRIEF          = "VEX V5 Odometry Template for PROS"
-PROJECT_LOGO           =
+PROJECT_LOGO           = docs/assets/logo.svg
 OUTPUT_DIRECTORY       = docs/build
 
 # Input
