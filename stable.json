@@ -2,11 +2,11 @@
   {
     "py/object": "pros.conductor.templates.base_template.BaseTemplate",
     "name": "Vortex",
-    "version": "3.2.2",
+    "version": "0.0.1",
     "target": "v5",
     "supported_kernels": "^4.1.0",
     "metadata": {
-      "location": "https://github.com/VortexLib/Vortex/releases/download/v3.2.2/Vortex@3.2.2.zip"
+      "location": "https://github.com/VortexLib/Vortex/releases/download/v0.0.1/Vortex@0.0.1.zip"
     }
   }
 ]
