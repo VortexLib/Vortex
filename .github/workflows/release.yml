@@ -1,0 +1,54 @@
+name: Release Template
+
+on:
+  push:
+    tags:
+      - "v*"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build template
+        id: build
+        uses: LemLib/pros-build@v3.0.0
+
+      - name: Get version from tag
+        id: version
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: Vortex ${{ steps.version.outputs.tag }}
+          body: |
+            ## Installation
+
+            ### Option 1: PROS CLI
+            ```bash
+            curl -LO https://github.com/${{ github.repository }}/releases/download/${{ steps.version.outputs.tag }}/${{ steps.build.outputs.name }}.zip
+            pros c fetch ${{ steps.build.outputs.name }}.zip
+            pros c apply Vortex
+            rm ${{ steps.build.outputs.name }}.zip
+            ```
+
+            ### Option 2: Manual
+            1. Download the `.zip` file below
+            2. Run `pros c fetch Vortex@<version>.zip`
+            3. Run `pros c apply Vortex` in your project
+
+            ---
+            See the [documentation](https://vortexlib.github.io/Vortex/) for usage guides.
+          files: ${{ github.workspace }}/template/*
+          draft: false
+          prerelease: false
+          generate_release_notes: true
