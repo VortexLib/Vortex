@@ -1,55 +1,45 @@
-<p align="center">
-  <img src="assets/vortex-logo.svg" alt="Vortex Logo" width="340" />
-</p>
+---
+layout: home
 
-# Vortex Odometry Library
+hero:
+  name: "Vortex"
+  text: "High-performance V5 motion control."
+  tagline: "Stunningly fast, accurate, and incredibly lightweight odometry library built for PROS."
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /guide/getting-started
+    - theme: alt
+      text: View API Reference
+      link: /api/chassis
 
-Welcome to the documentation for **Vortex**, a high-performance odometry and motion control library for VEX Robotics V5 using PROS.
-
+features:
+  - title: Arc Odometry
+    details: Incorporates advanced circular-arc integration to track precise movement during very high-speed turns, resolving classical gyro drift issues natively.
+  - title: Pure Pursuit
+    details: Experience unbelievably smooth dynamic path following. Curves and waypoints look like a breeze, even at top speeds.
+  - title: Live Visual Telemetry
+    details: Projects a live map of the robot directly onto the V5 brain screen! See motor temperatures, coordinates, and battery stats seamlessly.
+  - title: Drift Compensation
+    details: Automatically detects when you stop moving to recalculate IMU biases, effectively canceling out mechanical gyro creep.
 ---
 
-## Current Status: v0.0.1
-
-### What's New in v0.0.1
-- **Arc Odometry** — More accurate tracking during high-speed turns.
-- **Pure Pursuit** — Smooth path following with dynamic lookahead.
-- **Trapezoidal Motion Profiling** — Automatic smooth acceleration and deceleration.
-- **IMU Drift Compensation** — Corrects slow gyro creep while the robot is stationary.
-- **Visual Telemetry** — Live field map on the V5 brain screen with motor temperatures and battery.
-- **Stall Detection** — Automatically cancels motions when the robot is blocked.
-
----
-
-## Key Features
-
-- Full 2-wheel + IMU and 3-wheel odometry
-- `moveToPose`, `moveToPoint`, `turnToHeading`, `swingToHeading`, `follow`
-- PID controllers with slew rate, windup protection, and settle logic
-- SD card CSV logging for post-match analysis
-- Built-in LLEMU auton selector
-- `vortex-cli` for version management and GitHub releases
-
----
-
-## Get Started
-
-1. [Installation](installation.md) — Add Vortex to your PROS project
-2. [Setup Guide](setup.md) — Configure motors and tracking wheels
-3. [Tuning Parameters](parameters.md) — Understand `scrubFactor`, `trackWidth`, and PID gains
-4. [PID Tuning Guide](guides/tuner.md) — Use built-in tuning functions
-
----
-
-## Quick Example
-
-```cpp
-void autonomous() {
-    chassis.setPose(0, 0, 0);
-    chassis.moveToPose(24, 24, 90, 4000);
-    chassis.follow(my_path_txt, 15, 5000);
+<style>
+/* Background ambient glow */
+.VPHome {
+  position: relative;
 }
-```
-
----
-
-*Vortex is open-source — [GitHub](https://github.com/jonahchang207/Vortex)*
+.VPHome::before {
+  content: '';
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(0,0,0,0) 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+</style>

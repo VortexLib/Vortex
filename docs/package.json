@@ -1,0 +1,14 @@
+{
+  "name": "vortex-docs",
+  "version": "1.0.0",
+  "description": "Premium documentation for the Vortex library",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0",
+    "vue": "^3.4.0"
+  }
+}

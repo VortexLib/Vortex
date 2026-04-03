@@ -28,8 +28,8 @@ if [ ! -f "version" ]; then
     exit 1
 fi
 
-# Fix PATH in case 'pros' is installed locally (like with Homebrew, pipx, Python bins, or Antigravity/VSCode)
-export PATH="$HOME/.local/bin:$HOME/Library/Python/3.9/bin:$HOME/Library/Application Support/Antigravity/User/globalStorage/sigbots.pros/install/pros-cli-macos:/usr/local/bin:/opt/homebrew/bin:$PATH"
+# Fix PATH in case 'pros' and the toolchains are installed locally (like with Homebrew, pipx, Python bins, or Antigravity/VSCode)
+export PATH="$HOME/.local/bin:$HOME/Library/Python/3.9/bin:$HOME/Library/Application Support/Antigravity/User/globalStorage/sigbots.pros/install/pros-cli-macos:$HOME/Library/Application Support/Antigravity/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
 
 if ! command -v pros &> /dev/null; then
     echo -e "${RED}Error: 'pros' command not found even after appending default paths.${NC}"
