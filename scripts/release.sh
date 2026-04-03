@@ -101,12 +101,11 @@ rm -rf Vortex-Example-Project/include/Vortex Vortex-Example-Project/firmware/Vor
 unzip -o "./$ZIP_FILE" -d Vortex-Example-Project/ >/dev/null
 rm -f Vortex-Example-Project/template.pros
 
-# Update project.pros version to match
-if [ "$(uname)" = "Darwin" ]; then
-    sed -i '' "s/\"version\": \".*\"/\"version\": \"${NEW_VERSION}\"/" Vortex-Example-Project/project.pros
-else
-    sed -i "s/\"version\": \".*\"/\"version\": \"${NEW_VERSION}\"/" Vortex-Example-Project/project.pros
-fi
+# Update project.pros version to match using jq for safety
+jq --arg ver "$NEW_VERSION" '.["py/state"].templates.Vortex.version = $ver' Vortex-Example-Project/project.pros > project.pros.tmp && mv project.pros.tmp Vortex-Example-Project/project.pros
+
+# Clean up any leftover zips in the example project
+rm -f Vortex-Example-Project/*.zip
 
 zip -r "$EXAMPLE_ZIP_FILE" Vortex-Example-Project -x "*/.git/*" -x "*/bin/*" -x "*/build/*" -x "*/.cache/*" -x "*/compile_commands.json" -x "*.DS_Store" >/dev/null
 
