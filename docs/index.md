@@ -42,7 +42,7 @@ features:
   width: 100%;
   max-width: 800px;
   height: 600px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(0,0,0,0) 60%);
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, rgba(0,0,0,0) 60%);
   pointer-events: none;
   z-index: -1;
 }

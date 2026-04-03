@@ -1,7 +1,7 @@
 :root {
-  --vp-c-brand-1: #6366f1;
-  --vp-c-brand-2: #4f46e5;
-  --vp-c-brand-3: #818cf8;
+  --vp-c-brand-1: #4ade80;
+  --vp-c-brand-2: #22c55e;
+  --vp-c-brand-3: #86efac;
   
   /* Bezeled component radii */
   --vp-custom-border-radius: 12px;
@@ -12,7 +12,7 @@
 
 /* Glassmorphic Navbar Overlay */
 .VPNavBar {
-  background: rgba(18, 18, 20, 0.65) !important;
+  background: rgba(18, 20, 18, 0.65) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -41,28 +41,29 @@ div[class*='language-'], .vp-doc .custom-block {
 .VPFeature:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border-color: rgba(99, 102, 241, 0.5) !important;
+  border-color: rgba(74, 222, 128, 0.5) !important;
 }
 
 /* Smooth gradients for brand text */
 .VPHero .name {
-  background: -webkit-linear-gradient(45deg, #6366f1, #8b5cf6);
+  background: -webkit-linear-gradient(45deg, #4ade80, #34d399);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 2px 4px rgba(99, 102, 241, 0.4));
+  filter: drop-shadow(0px 2px 4px rgba(74, 222, 128, 0.4));
 }
 
 /* Stylized Buttons */
 .VPHero .VPButton.brand {
   background-color: var(--vp-c-brand-1);
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
   transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 .VPHero .VPButton.brand:hover {
   background-color: var(--vp-c-brand-2);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+  box-shadow: 0 6px 20px rgba(74, 222, 128, 0.6);
 }
 
 /* Sidebar styling for glass effect */
