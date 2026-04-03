@@ -248,9 +248,9 @@ void opcontrol() {
     vortex_extras();
 
     chassis.opcontrol_tank();  // Tank control
-    // chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
-    // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
-    // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
+    // chassis.opcontrol_arcade_standard(vortex::SPLIT);   // Standard split arcade
+    // chassis.opcontrol_arcade_standard(vortex::SINGLE);  // Standard single arcade
+    // chassis.opcontrol_arcade_flipped(vortex::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_standard(vortex::SPLIT);   // Standard split arcade
     // chassis.opcontrol_arcade_standard(vortex::SINGLE);  // Standard single arcade
     // chassis.opcontrol_arcade_flipped(vortex::SPLIT);    // Flipped split arcade

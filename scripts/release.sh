@@ -95,13 +95,18 @@ EXAMPLE_ZIP_FILE="Vortex-Example-Project-v${NEW_VERSION}.zip"
 rm -f Vortex-Example-Project-v*.zip
 
 # Precompile example project "out of the box"
-# First fetch the newly built template so it can be applied
-pros c fetch "./$ZIP_FILE" --ignore-lock
+# We'll manually sync the files from the template zip to ensure "ready out of the box" status 
+# ignoring potential PROS conductor issues in different environments.
+rm -rf Vortex-Example-Project/include/Vortex Vortex-Example-Project/firmware/Vortex.a
+unzip -o "./$ZIP_FILE" -d Vortex-Example-Project/ >/dev/null
+rm -f Vortex-Example-Project/template.pros
 
-# Apply the template to the example project
-cd Vortex-Example-Project
-pros c apply Vortex --ignore-lock
-cd ..
+# Update project.pros version to match
+if [ "$(uname)" = "Darwin" ]; then
+    sed -i '' "s/\"version\": \".*\"/\"version\": \"${NEW_VERSION}\"/" Vortex-Example-Project/project.pros
+else
+    sed -i "s/\"version\": \".*\"/\"version\": \"${NEW_VERSION}\"/" Vortex-Example-Project/project.pros
+fi
 
 zip -r "$EXAMPLE_ZIP_FILE" Vortex-Example-Project -x "*/.git/*" -x "*/bin/*" -x "*/build/*" -x "*/.cache/*" -x "*/compile_commands.json" -x "*.DS_Store" >/dev/null
 
