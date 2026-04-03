@@ -70,7 +70,7 @@ esac
 # Save current branch name so we can switch back later
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-echo -e "\n${CYAN}[1/6] Bumping version to ${GREEN}${NEW_VERSION}${NC}..."
+echo -e "\n${CYAN}[1/7] Bumping version to ${GREEN}${NEW_VERSION}${NC}..."
 
 # Update version file and Makefile
 echo "$NEW_VERSION" > version
@@ -80,7 +80,7 @@ else
     sed -i "s/^VERSION:=.*/VERSION:=${NEW_VERSION}/" Makefile
 fi
 
-echo -e "${CYAN}[2/6] Building PROS template (${NEW_VERSION})...${NC}"
+echo -e "${CYAN}[2/7] Building PROS template (${NEW_VERSION})...${NC}"
 rm -f Vortex@*.zip
 pros make template
 
@@ -90,22 +90,27 @@ if [ ! -f "$ZIP_FILE" ]; then
     exit 1
 fi
 
-echo -e "${CYAN}[3/6] Committing all changes to Git...${NC}"
+echo -e "${CYAN}[3/7] Packaging Example Project...${NC}"
+EXAMPLE_ZIP_FILE="Vortex-Example-Project-v${NEW_VERSION}.zip"
+rm -f Vortex-Example-Project-v*.zip
+zip -r "$EXAMPLE_ZIP_FILE" Vortex-Example-Project -x "*/.git/*" -x "*/bin/*" -x "*/build/*" -x "*/.cache/*" -x "*/compile_commands.json" -x "*.DS_Store" >/dev/null
+
+echo -e "${CYAN}[4/7] Committing all changes to Git...${NC}"
 git add .
 git commit -m "Release v$NEW_VERSION" || true
 git tag -a "v$NEW_VERSION" -m "Release v$NEW_VERSION" || true
 
-echo -e "${CYAN}[4/6] Pushing to GitHub...${NC}"
+echo -e "${CYAN}[5/7] Pushing to GitHub...${NC}"
 git push origin HEAD
 git push origin "v$NEW_VERSION"
 
-echo -e "${CYAN}[5/6] Creating GitHub Release...${NC}"
-gh release create "v$NEW_VERSION" "./$ZIP_FILE" \
+echo -e "${CYAN}[6/7] Creating GitHub Release...${NC}"
+gh release create "v$NEW_VERSION" "./$ZIP_FILE" "./$EXAMPLE_ZIP_FILE" \
     --title "Vortex v$NEW_VERSION" \
     --notes "Release v$NEW_VERSION" \
     --latest || true
 
-echo -e "${CYAN}[6/6] Updating depot branch...${NC}"
+echo -e "${CYAN}[7/7] Updating depot branch...${NC}"
 # Switch to or create depot branch
 if git show-branch depot &>/dev/null || git ls-remote --heads origin depot | grep -q depot; then
     git checkout depot
