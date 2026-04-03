@@ -26,10 +26,13 @@ export default defineConfig({
       {
         text: 'API Reference',
         items: [
-          { text: 'Chassis Controller', link: '/api/chassis' },
-          { text: 'Odometry Metrics', link: '/api/odom' },
+          { text: 'Chassis & Config', link: '/api/chassis' },
+          { text: 'Motion Control', link: '/api/motion-control' },
+          { text: 'Path Following', link: '/api/path-following' },
+          { text: 'Odometry & Tracking', link: '/api/odom' },
           { text: 'Tracking Wheels', link: '/api/tracking-wheels' },
           { text: 'PID Control', link: '/api/pid' },
+          { text: 'PID Live Tuner', link: '/api/pid-tuner' },
           { text: 'Piston Control', link: '/api/piston' },
           { text: 'Slew Rate Control', link: '/api/slew' },
           { text: 'Auton Selector', link: '/api/auton-selector' },
