@@ -27,7 +27,7 @@
                 ],
                 "target": "v5",
                 "user_files": [],
-                "version": "0.0.8"
+                "version": "0.0.9"
             },
             "kernel": {
                 "location": "C:\\Users\\union\\AppData\\Roaming\\PROS\\templates\\kernel@4.1.1",
@@ -102,7 +102,7 @@
                     "src\\main.cpp",
                     "include\\main.h"
                 ],
-                "version": "0.0.8"
+                "version": "0.0.9"
             },
             "liblvgl": {
                 "location": "C:\\Users\\union\\AppData\\Roaming\\PROS\\templates\\liblvgl@8.3.8",
@@ -278,7 +278,7 @@
                 ],
                 "target": "v5",
                 "user_files": [],
-                "version": "0.0.8"
+                "version": "0.0.9"
             },
             "okapilib": {
                 "location": "C:\\Users\\union\\AppData\\Roaming\\PROS\\templates\\okapilib@5.0.0",
@@ -420,7 +420,7 @@
                 ],
                 "target": "v5",
                 "user_files": [],
-                "version": "0.0.8"
+                "version": "0.0.9"
             }
         },
         "upload_options": {
