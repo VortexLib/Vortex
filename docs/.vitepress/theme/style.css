@@ -1,80 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
 :root {
+  /* Brand Colors */
   --vp-c-brand-1: #4ade80;
   --vp-c-brand-2: #22c55e;
   --vp-c-brand-3: #86efac;
+  --vp-c-brand-soft: rgba(74, 222, 128, 0.1);
+  --vp-c-brand-glow: rgba(74, 222, 128, 0.4);
+
+  /* Backgrounds & Surfaces */
+  --vp-c-bg: #0d0d0f;
+  --vp-c-bg-alt: #131316;
+  --vp-c-bg-glass: rgba(18, 20, 24, 0.65);
+  --vp-c-border: rgba(255, 255, 255, 0.08);
   
-  /* Bezeled component radii */
-  --vp-custom-border-radius: 12px;
+  /* Layout Constants */
+  --vp-custom-radius: 16px;
+  --vp-custom-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   
-  /* Sleek modern font override if preferred over system UI */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  /* Typography */
+  --vp-font-family-base: 'Inter', system-ui, sans-serif;
+  --vp-font-family-header: 'Outfit', sans-serif;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--vp-c-bg);
+  background-image: 
+    radial-gradient(at 100% 0%, rgba(74, 222, 128, 0.03) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(74, 222, 128, 0.02) 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
 /* Glassmorphic Navbar Overlay */
 .VPNavBar {
-  background: rgba(18, 20, 18, 0.65) !important;
+  background: var(--vp-c-bg-glass) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--vp-c-border);
 }
 
-.VPHome {
-  padding-bottom: 2rem;
+/* Bezeled Content Containers */
+.vp-doc h1, .vp-doc h2, .vp-doc h3 {
+  font-family: var(--vp-font-family-header);
 }
 
-/* Beautiful Drop Shadows and Code Block bezels */
 div[class*='language-'], .vp-doc .custom-block {
-  border-radius: var(--vp-custom-border-radius) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+  border-radius: var(--vp-custom-radius) !important;
+  box-shadow: var(--vp-custom-shadow);
+  border: 1px solid var(--vp-c-border);
+  background: rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Hover micro-animations for feature cards */
+div[class*='language-']:hover {
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+/* Glass Feature Cards */
 .VPFeature {
-  border-radius: var(--vp-custom-border-radius) !important;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
-  background: rgba(255, 255, 255, 0.03) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid var(--vp-c-border) !important;
+  border-radius: var(--vp-custom-radius) !important;
+  padding: 24px !important;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease !important;
 }
 
 .VPFeature:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border-color: rgba(74, 222, 128, 0.5) !important;
+  background: rgba(74, 222, 128, 0.04) !important;
+  border-color: var(--vp-c-brand-1) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -10px rgba(74, 222, 128, 0.15);
 }
 
-/* Smooth gradients for brand text */
+/* Gradient Hero Typography */
 .VPHero .name {
-  background: -webkit-linear-gradient(45deg, #4ade80, #34d399);
+  background: linear-gradient(135deg, #4ade80 0%, #34d399 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 2px 4px rgba(74, 222, 128, 0.4));
+  filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.25));
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-/* Stylized Buttons */
-.VPHero .VPButton.brand {
-  background-color: var(--vp-c-brand-1);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-.VPHero .VPButton.brand:hover {
-  background-color: var(--vp-c-brand-2);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(74, 222, 128, 0.6);
+/* Stylized Controls */
+.VPButton.brand {
+  background-color: var(--vp-c-brand-1) !important;
+  border-radius: 12px !important;
+  font-weight: 600;
+  box-shadow: 0 4px 14px 0 rgba(74, 222, 128, 0.39);
+  transition: all 0.2s ease;
 }
 
-/* Sidebar styling for glass effect */
+.VPButton.brand:hover {
+  background-color: var(--vp-c-brand-2) !important;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(74, 222, 128, 0.5);
+}
+
+/* Glass Sidebar */
 .VPSidebar {
-  background: rgba(24, 24, 28, 0.7) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(13, 13, 15, 0.8) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid var(--vp-c-border);
 }
 
-/* Hide native transition quirks that interrupt smooth loading */
+/* Clean UI tweaks */
 html, body {
   scroll-behavior: smooth;
+  height: 100%;
 }

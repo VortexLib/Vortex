@@ -32,18 +32,23 @@ features:
 /* Background ambient glow */
 .VPHome {
   position: relative;
+  overflow: hidden;
 }
 .VPHome::before {
   content: '';
   position: absolute;
-  top: 100px;
+  top: -100px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 800px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, rgba(0,0,0,0) 60%);
+  width: 150%;
+  height: 800px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.08) 0%, rgba(13, 13, 15, 0) 70%);
   pointer-events: none;
   z-index: -1;
+}
+
+/* Professional feature grid adjustments */
+.VPFeatures {
+  margin-top: 4rem;
 }
 </style>
