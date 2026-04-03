@@ -1,24 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <defs>
-    <linearGradient id="orgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#00e050;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#009933;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <!-- Background -->
-  <rect width="400" height="400" rx="80" fill="#1a1a2e"/>
-  <!-- Vortex spiral -->
-  <g transform="translate(200,185) scale(0.55)">
-    <path d="M 0,-160 A 160,160 0 0,1 138.6,80 A 100,100 0 0,0 0,-100"
-          fill="none" stroke="url(#orgGrad)" stroke-width="30" stroke-linecap="round" opacity="0.95"/>
-    <path d="M 0,160 A 160,160 0 0,1 -138.6,-80 A 100,100 0 0,0 0,100"
-          fill="none" stroke="url(#orgGrad)" stroke-width="30" stroke-linecap="round" opacity="0.95"/>
-    <path d="M 0,-70 A 70,70 0 0,1 60.6,35 A 35,35 0 0,0 0,-35"
-          fill="none" stroke="url(#orgGrad)" stroke-width="22" stroke-linecap="round" opacity="0.75"/>
-    <path d="M 0,70 A 70,70 0 0,1 -60.6,-35 A 35,35 0 0,0 0,35"
-          fill="none" stroke="url(#orgGrad)" stroke-width="22" stroke-linecap="round" opacity="0.75"/>
-    <circle cx="0" cy="0" r="14" fill="url(#orgGrad)"/>
-  </g>
-  <!-- Text -->
-  <text x="200" y="350" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="42" font-weight="700" fill="#ffffff" letter-spacing="6">VORTEX</text>
+<svg width="100%" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="vg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#00E050"/>
+<stop offset="100%" stop-color="#007733"/>
+</linearGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#16163a"/>
+<stop offset="100%" stop-color="#0d2018"/>
+</linearGradient>
+</defs>
+
+<!-- Background -->
+<rect x="0" y="0" width="400" height="400" rx="80" fill="url(#bg)"/>
+
+<!-- Vortex mark -->
+<g transform="translate(200, 185)">
+<!-- Outer ring: r=100 -->
+<path d="M0,-100 A100,100 0 0,1 86.6,50" fill="none" stroke="#00E050" stroke-width="12" stroke-linecap="round" opacity="0.9"/>
+<path d="M86.6,50 A100,100 0 0,1 -86.6,50" fill="none" stroke="#00BB66" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+<path d="M-86.6,50 A100,100 0 0,1 0,-100" fill="none" stroke="#009944" stroke-width="9" stroke-linecap="round" opacity="0.6"/>
+
+<!-- Middle ring: r=60 -->
+<path d="M0,-60 A60,60 0 0,1 52,30" fill="none" stroke="#00E050" stroke-width="9" stroke-linecap="round" opacity="0.7"/>
+<path d="M52,30 A60,60 0 0,1 -52,30" fill="none" stroke="#00BB66" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+<path d="M-52,30 A60,60 0 0,1 0,-60" fill="none" stroke="#009944" stroke-width="7" stroke-linecap="round" opacity="0.45"/>
+
+<!-- Inner ring: r=30 -->
+<path d="M0,-30 A30,30 0 0,1 26,15" fill="none" stroke="#00E050" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+<path d="M26,15 A30,30 0 0,1 -26,15" fill="none" stroke="#00BB66" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<path d="M-26,15 A30,30 0 0,1 0,-30" fill="none" stroke="#009944" stroke-width="4" stroke-linecap="round" opacity="0.3"/>
+
+<!-- Center + satellites -->
+<circle cx="0" cy="0" r="7" fill="url(#vg)"/>
+<circle cx="0" cy="-100" r="5" fill="#00E050" opacity="0.9"/>
+<circle cx="52" cy="30" r="3.5" fill="#00BB66" opacity="0.65"/>
+<circle cx="-26" cy="15" r="2.5" fill="#009944" opacity="0.5"/>
+</g>
+
+<!-- Wordmark -->
+<text x="200" y="340" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="38" font-weight="600" letter-spacing="7" fill="#ffffff">VORTEX</text>
 </svg>

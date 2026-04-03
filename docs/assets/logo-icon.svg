@@ -1,20 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <defs>
-    <linearGradient id="icoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#00e050;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#009933;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="128" height="128" rx="28" fill="#1a1a2e"/>
-  <g transform="translate(64,64) scale(0.35)">
-    <path d="M 0,-160 A 160,160 0 0,1 138.6,80 A 100,100 0 0,0 0,-100"
-          fill="none" stroke="url(#icoGrad)" stroke-width="32" stroke-linecap="round"/>
-    <path d="M 0,160 A 160,160 0 0,1 -138.6,-80 A 100,100 0 0,0 0,100"
-          fill="none" stroke="url(#icoGrad)" stroke-width="32" stroke-linecap="round"/>
-    <path d="M 0,-70 A 70,70 0 0,1 60.6,35 A 35,35 0 0,0 0,-35"
-          fill="none" stroke="url(#icoGrad)" stroke-width="24" stroke-linecap="round" opacity="0.7"/>
-    <path d="M 0,70 A 70,70 0 0,1 -60.6,-35 A 35,35 0 0,0 0,35"
-          fill="none" stroke="url(#icoGrad)" stroke-width="24" stroke-linecap="round" opacity="0.7"/>
-    <circle cx="0" cy="0" r="14" fill="url(#icoGrad)"/>
-  </g>
+<svg width="100%" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="vg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#00E050"/>
+<stop offset="100%" stop-color="#007733"/>
+</linearGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#16163a"/>
+<stop offset="100%" stop-color="#0d2018"/>
+</linearGradient>
+</defs>
+
+<rect x="0" y="0" width="160" height="160" rx="36" fill="url(#bg)"/>
+
+<g transform="translate(80, 80)">
+<!-- Outer ring: r=48 -->
+<path d="M0,-48 A48,48 0 0,1 41.6,24" fill="none" stroke="#00E050" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+<path d="M41.6,24 A48,48 0 0,1 -41.6,24" fill="none" stroke="#00BB66" stroke-width="7" stroke-linecap="round" opacity="0.75"/>
+<path d="M-41.6,24 A48,48 0 0,1 0,-48" fill="none" stroke="#009944" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+
+<!-- Inner ring: r=24 -->
+<path d="M0,-24 A24,24 0 0,1 20.8,12" fill="none" stroke="#00E050" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+<path d="M20.8,12 A24,24 0 0,1 -20.8,12" fill="none" stroke="#00BB66" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+<path d="M-20.8,12 A24,24 0 0,1 0,-24" fill="none" stroke="#009944" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+
+<!-- Center + satellite -->
+<circle cx="0" cy="0" r="5" fill="url(#vg)"/>
+<circle cx="0" cy="-48" r="3.5" fill="#00E050" opacity="0.9"/>
+</g>
 </svg>
