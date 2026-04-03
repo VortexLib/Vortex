@@ -2,7 +2,7 @@
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
-// https://ez-robotics.github.io/EZ-Template/
+// https://vortex-robotics.github.io/Vortex/
 /////
 
 // These are out of 127
@@ -45,7 +45,7 @@ void default_constants() {
   chassis.odom_boomerang_distance_set(16_in);  // This sets the maximum distance away from target that the carrot point can be
   chassis.odom_boomerang_dlead_set(0.625);     // This handles how aggressive the end of boomerang motions are
 
-  chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
+  chassis.pid_angle_behavior_set(vortex::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
 ///
@@ -136,21 +136,16 @@ void wait_until_change_speed() {
 // Swing Example
 ///
 void swing_example() {
-  // The first parameter is ez::LEFT_SWING or ez::RIGHT_SWING
-  // The second parameter is the target in degrees
-  // The third parameter is the speed of the moving side of the drive
-  // The fourth parameter is the speed of the still side of the drive, this allows for wider arcs
-
-  chassis.pid_swing_set(ez::LEFT_SWING, 45_deg, SWING_SPEED, 45);
+  chassis.pid_swing_set(vortex::LEFT_SWING, 45_deg, SWING_SPEED, 45);
   chassis.pid_wait();
 
-  chassis.pid_swing_set(ez::RIGHT_SWING, 0_deg, SWING_SPEED, 45);
+  chassis.pid_swing_set(vortex::RIGHT_SWING, 0_deg, SWING_SPEED, 45);
   chassis.pid_wait();
 
-  chassis.pid_swing_set(ez::RIGHT_SWING, 45_deg, SWING_SPEED, 45);
+  chassis.pid_swing_set(vortex::RIGHT_SWING, 45_deg, SWING_SPEED, 45);
   chassis.pid_wait();
 
-  chassis.pid_swing_set(ez::LEFT_SWING, 0_deg, SWING_SPEED, 45);
+  chassis.pid_swing_set(vortex::LEFT_SWING, 0_deg, SWING_SPEED, 45);
   chassis.pid_wait();
 }
 
@@ -188,7 +183,7 @@ void combining_movements() {
   chassis.pid_turn_set(45_deg, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_swing_set(ez::RIGHT_SWING, -45_deg, SWING_SPEED, 45);
+  chassis.pid_swing_set(vortex::RIGHT_SWING, -45_deg, SWING_SPEED, 45);
   chassis.pid_wait();
 
   chassis.pid_turn_set(0_deg, TURN_SPEED);
@@ -340,7 +335,7 @@ void measure_offsets() {
     double target = i % 2 == 0 ? 90 : 270;  // Switch the turn target every run from 270 to 90
 
     // Turn to target at half power
-    chassis.pid_turn_set(target, 63, ez::raw);
+    chassis.pid_turn_set(target, 63, vortex::raw);
     chassis.pid_wait();
     pros::delay(250);
 

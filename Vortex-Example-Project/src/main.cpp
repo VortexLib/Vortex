@@ -2,11 +2,11 @@
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
-// https://ez-robotics.github.io/EZ-Template/
+// https://vortex-robotics.github.io/Vortex/
 /////
 
 // Chassis constructor
-ez::Drive chassis(
+vortex::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
     {1, 2, 3},     // Left Chassis Ports (negative port will reverse it!)
     {-4, -5, -6},  // Right Chassis Ports (negative port will reverse it!)
@@ -20,8 +20,8 @@ ez::Drive chassis(
 //  - you should get positive values on the encoders going FORWARD and RIGHT
 // - `2.75` is the wheel diameter
 // - `4.0` is the distance from the center of the wheel to the center of the robot
-// ez::tracking_wheel horiz_tracker(8, 2.75, 4.0);  // This tracking wheel is perpendicular to the drive wheels
-// ez::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is parallel to the drive wheels
+// vortex::tracking_wheel horiz_tracker(8, 2.75, 4.0);  // This tracking wheel is perpendicular to the drive wheels
+// vortex::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is parallel to the drive wheels
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -31,7 +31,7 @@ ez::Drive chassis(
  */
 void initialize() {
   // Print our branding over your terminal :D
-  ez::ez_template_print();
+  vortex::vortex_print();
 
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
 
@@ -57,7 +57,7 @@ void initialize() {
   // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
 
   // Autonomous Selector using LLEMU
-  ez::as::auton_selector.autons_add({
+  vortex::as::auton_selector.autons_add({
       {"Drive\n\nDrive forward and come back", drive_example},
       {"Turn\n\nTurn 3 times.", turn_example},
       {"Drive and Turn\n\nDrive forward, turn, come back", drive_and_turn},
@@ -76,7 +76,7 @@ void initialize() {
 
   // Initialize chassis and auton selector
   chassis.initialize();
-  ez::as::initialize();
+  vortex::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
 }
 
@@ -133,39 +133,39 @@ void autonomous() {
   to be consistent
   */
 
-  ez::as::auton_selector.selected_auton_call();  // Calls selected auton from autonomous selector
+  vortex::as::auton_selector.selected_auton_call();  // Calls selected auton from autonomous selector
 }
 
 /**
  * Simplifies printing tracker values to the brain screen
  */
-void screen_print_tracker(ez::tracking_wheel *tracker, std::string name, int line) {
+void screen_print_tracker(vortex::tracking_wheel *tracker, std::string name, int line) {
   std::string tracker_value = "", tracker_width = "";
   // Check if the tracker exists
   if (tracker != nullptr) {
     tracker_value = name + " tracker: " + util::to_string_with_precision(tracker->get());             // Make text for the tracker value
-    tracker_width = "  width: " + util::to_string_with_precision(tracker->distance_to_center_get());  // Make text for the distance to center
+    tracker_width = "  width: " + vortex::util::to_string_with_precision(tracker->distance_to_center_get());  // Make text for the distance to center
   }
-  ez::screen_print(tracker_value + tracker_width, line);  // Print final tracker text
+  vortex::screen_print(tracker_value + tracker_width, line);  // Print final tracker text
 }
 
 /**
- * Ez screen task
+ * Vortex screen task
  * Adding new pages here will let you view them during user control or autonomous
  * and will help you debug problems you're having
  */
-void ez_screen_task() {
+void vortex_screen_task() {
   while (true) {
     // Only run this when not connected to a competition switch
     if (!pros::competition::is_connected()) {
       // Blank page for odom debugging
       if (chassis.odom_enabled() && !chassis.pid_tuner_enabled()) {
         // If we're on the first blank page...
-        if (ez::as::page_blank_is_on(0)) {
+        if (vortex::as::page_blank_is_on(0)) {
           // Display X, Y, and Theta
-          ez::screen_print("x: " + util::to_string_with_precision(chassis.odom_x_get()) +
-                               "\ny: " + util::to_string_with_precision(chassis.odom_y_get()) +
-                               "\na: " + util::to_string_with_precision(chassis.odom_theta_get()),
+          vortex::screen_print("x: " + vortex::util::to_string_with_precision(chassis.odom_x_get()) +
+                               "\ny: " + vortex::util::to_string_with_precision(chassis.odom_y_get()) +
+                               "\na: " + vortex::util::to_string_with_precision(chassis.odom_theta_get()),
                            1);  // Don't override the top Page line
 
           // Display all trackers that are being used
@@ -179,14 +179,14 @@ void ez_screen_task() {
 
     // Remove all blank pages when connected to a comp switch
     else {
-      if (ez::as::page_blank_amount() > 0)
-        ez::as::page_blank_remove_all();
+      if (vortex::as::page_blank_amount() > 0)
+        vortex::as::page_blank_remove_all();
     }
 
-    pros::delay(ez::util::DELAY_TIME);
+    pros::delay(vortex::util::DELAY_TIME);
   }
 }
-pros::Task ezScreenTask(ez_screen_task);
+pros::Task vortexScreenTask(vortex_screen_task);
 
 /**
  * Gives you some extras to run in your opcontrol:
@@ -195,7 +195,7 @@ pros::Task ezScreenTask(ez_screen_task);
  *     is only enabled when you're not connected to competition control.
  * - gives you a GUI to change your PID values live by pressing X
  */
-void ez_template_extras() {
+void vortex_extras() {
   // Only run this when not connected to a competition switch
   if (!pros::competition::is_connected()) {
     // PID Tuner
@@ -244,19 +244,22 @@ void opcontrol() {
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
   while (true) {
-    // Gives you some extras to make EZ-Template ezier
-    ez_template_extras();
+    // Gives you some extras to make Vortex vortexier
+    vortex_extras();
 
     chassis.opcontrol_tank();  // Tank control
     // chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
-    // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
+    // chassis.opcontrol_arcade_standard(vortex::SPLIT);   // Standard split arcade
+    // chassis.opcontrol_arcade_standard(vortex::SINGLE);  // Standard single arcade
+    // chassis.opcontrol_arcade_flipped(vortex::SPLIT);    // Flipped split arcade
+    // chassis.opcontrol_arcade_flipped(vortex::SINGLE);   // Flipped single arcade
 
     // . . .
     // Put more user control code here!
     // . . .
 
-    pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
+    pros::delay(vortex::util::DELAY_TIME);  // This is used for timer calculations!  Keep this vortex::util::DELAY_TIME
   }
 }

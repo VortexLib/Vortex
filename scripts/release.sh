@@ -93,6 +93,16 @@ fi
 echo -e "${CYAN}[3/7] Packaging Example Project...${NC}"
 EXAMPLE_ZIP_FILE="Vortex-Example-Project-v${NEW_VERSION}.zip"
 rm -f Vortex-Example-Project-v*.zip
+
+# Precompile example project "out of the box"
+# First fetch the newly built template so it can be applied
+pros c fetch "./$ZIP_FILE" --ignore-lock
+
+# Apply the template to the example project
+cd Vortex-Example-Project
+pros c apply Vortex --ignore-lock
+cd ..
+
 zip -r "$EXAMPLE_ZIP_FILE" Vortex-Example-Project -x "*/.git/*" -x "*/bin/*" -x "*/build/*" -x "*/.cache/*" -x "*/compile_commands.json" -x "*.DS_Store" >/dev/null
 
 echo -e "${CYAN}[4/7] Committing all changes to Git...${NC}"

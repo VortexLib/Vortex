@@ -1,15 +1,15 @@
 {
     "py/object": "pros.conductor.project.Project",
     "py/state": {
-        "project_name": "EZ-Template-Example",
+        "project_name": "Vortex-Example",
         "target": "v5",
         "templates": {
-            "EZ-Template": {
+            "Vortex": {
                 "location": "C:\\Users\\union\\AppData\\Roaming\\PROS\\templates\\EZ-Template@3.2.2",
                 "metadata": {
                     "origin": "local"
                 },
-                "name": "EZ-Template",
+                "name": "Vortex",
                 "py/object": "pros.conductor.templates.local_template.LocalTemplate",
                 "supported_kernels": "^4.1.1",
                 "system_files": [
