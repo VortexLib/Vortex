@@ -18,10 +18,14 @@ features:
     details: Incorporates advanced circular-arc integration to track precise movement during very high-speed turns, resolving classical gyro drift issues natively.
   - title: Pure Pursuit
     details: Experience unbelievably smooth dynamic path following. Curves and waypoints look like a breeze, even at top speeds.
-  - title: Live Visual Telemetry
-    details: Projects a live map of the robot directly onto the V5 brain screen! See motor temperatures, coordinates, and battery stats seamlessly.
-  - title: Drift Compensation
-    details: Automatically detects when you stop moving to recalculate IMU biases, effectively canceling out mechanical gyro creep.
+  - title: Integrated Auton Selector
+    details: Easily switch between multiple autonomous routines using the V5 brain screen or limit switches.
+  - title: PID & Slew Control
+    details: Robust, classes for PID and Slew rate control to keep your mechanisms stable and your acceleration smooth.
+  - title: SD Card Logging
+    details: Log telemetry and autonomous selection directly to an SD card for post-match analysis.
+  - title: Lightweight & Modular
+    details: Designed to be minimal and fast. Only include what you need, with no heavy overhead or background tasks.
 ---
 
 <style>

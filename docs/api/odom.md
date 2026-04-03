@@ -1,21 +1,45 @@
 # Odometry Metrics
 
-Retrieving the localized metrics dynamically from the background thread is totally lock-free and extremely fast in Vortex.
+Retrieving localized metrics from the background tracking thread is lock-free and extremely fast in Vortex.
 
-## `getPose`
+## Global Pose
 
-Returns a structural class representing the `X`, `Y` and `Theta` state of the robot globally.
-
+### `getPose`
+Returns a `vortex::pose` struct representing the current `x`, `y`, and `theta` of the robot.
 ```cpp
-vortex::Pose currentPose = chassis.getPose();
-
-printf("X: %f, Y: %f, T: %f\n", currentPose.x, currentPose.y, currentPose.theta);
+vortex::pose current = chassis.getPose();
 ```
 
-## `setPose`
-
-Teleports the robot internally. This is practically used natively at the very beginning of standard autonomous tasks or skill runs.
-
+### `setPose`
+Teleports the robot's internal coordinates. Typically used at the start of autonomous.
 ```cpp
-chassis.setPose(0, 0, 90); // Zeroes coordinates and sets heading accurately sideways.
+chassis.setPose(0, 0, 90); // Start at (0,0) facing 90 degrees
+```
+
+## Sensor Data
+
+### `get_gyro`
+Returns the current heading of the IMU in degrees.
+```cpp
+double heading = chassis.get_gyro();
+```
+
+### `get_dist`
+Returns the average distance traveled by the drive encoders (in inches).
+```cpp
+double dist = chassis.get_dist();
+```
+
+## Internal States
+
+### `get_mode`
+Returns the current movement mode (e.g., `vortex::PURE_PURSUIT`, `vortex::DRIVE`).
+```cpp
+vortex::e_mode mode = chassis.get_mode();
+```
+
+### `is_settled`
+Returns `true` if the chassis has completed its current movement.
+```cpp
+while (!chassis.is_settled()) pros::delay(10);
 ```

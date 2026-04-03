@@ -44,3 +44,18 @@ make
 ```
 
 If it successfully links and throws no compilation errors, you are completely armed and ready to conquer the field! 🎉
+
+## Choosing Your Starting Point
+
+Vortex offers two ways to jump into development:
+
+### A. Blank Template (Recommended for Veterans)
+If you already have a codebase or want to start from scratch, simply install the library as shown above and start including `Vortex/api.hpp`.
+
+### B. Example Project (Recommended for Starters)
+We provide a pre-configured **Example Project** that includes:
+- A fully mapped Chassis with PID constants.
+- Example Autonomous routines (Swing, Drive, Turn).
+- A subsystem structure ready for expansion.
+
+You can download the latest `Vortex-Example-Project.zip` from our [GitHub Releases](https://github.com/jonahchang207/Vortex/releases). Unzip it and open the folder in VS Code to get started immediately!

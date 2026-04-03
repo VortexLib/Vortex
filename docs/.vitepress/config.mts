@@ -28,6 +28,13 @@ export default defineConfig({
         items: [
           { text: 'Chassis Controller', link: '/api/chassis' },
           { text: 'Odometry Metrics', link: '/api/odom' },
+          { text: 'Tracking Wheels', link: '/api/tracking-wheels' },
+          { text: 'PID Control', link: '/api/pid' },
+          { text: 'Piston Control', link: '/api/piston' },
+          { text: 'Slew Rate Control', link: '/api/slew' },
+          { text: 'Auton Selector', link: '/api/auton-selector' },
+          { text: 'SD Card Utilities', link: '/api/sdcard' },
+          { text: 'Math & Utilities', link: '/api/utilities' },
         ]
       }
     ],
