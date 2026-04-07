@@ -2,6 +2,16 @@
   {
     "py/object": "pros.conductor.templates.base_template.BaseTemplate",
     "name": "Vortex",
+    "version": "0.0.17",
+    "target": "v5",
+    "supported_kernels": "^4.1.0",
+    "metadata": {
+      "location": "https://github.com/VortexLib/Vortex/releases/download/v0.0.17/Vortex@0.0.17.zip"
+    }
+  },
+  {
+    "py/object": "pros.conductor.templates.base_template.BaseTemplate",
+    "name": "Vortex",
     "version": "0.0.16",
     "target": "v5",
     "supported_kernels": "^4.1.0",
