@@ -101,8 +101,11 @@ rm -rf Vortex-Example-Project/include/Vortex Vortex-Example-Project/firmware/Vor
 unzip -o "./$ZIP_FILE" -d Vortex-Example-Project/ >/dev/null
 rm -f Vortex-Example-Project/template.pros
 
-# Update project.pros version to match using jq for safety
-jq --arg ver "$NEW_VERSION" '.["py/state"].templates.Vortex.version = $ver' Vortex-Example-Project/project.pros > project.pros.tmp && mv project.pros.tmp Vortex-Example-Project/project.pros
+# Update project.pros version and depot origin to match using jq for safety
+jq --arg ver "$NEW_VERSION" '
+  .["py/state"].templates.Vortex.version = $ver |
+  .["py/state"].templates.Vortex.metadata.origin = "vortex-depot"
+' Vortex-Example-Project/project.pros > project.pros.tmp && mv project.pros.tmp Vortex-Example-Project/project.pros
 
 # Clean up any leftover zips in the example project
 rm -f Vortex-Example-Project/*.zip
@@ -186,3 +189,7 @@ git checkout $CURRENT_BRANCH
 echo -e "\n${BLUE}=======================================${NC}"
 echo -e "${GREEN} Successfully built, committed, released, and mapped depot for Vortex v${NEW_VERSION}! ${NC}"
 echo -e "${BLUE}=======================================${NC}"
+echo ""
+echo -e "${CYAN}Users can register the depot and upgrade with:${NC}"
+echo -e "  pros c add-depot vortex-depot https://raw.githubusercontent.com/${REPO_SLUG}/depot/stable.json"
+echo -e "  pros c upgrade Vortex"

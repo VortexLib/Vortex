@@ -7,7 +7,7 @@
       "Vortex": {
         "location": "local",
         "metadata": {
-          "origin": "local"
+          "origin": "vortex-depot"
         },
         "name": "Vortex",
         "py/object": "pros.conductor.templates.local_template.LocalTemplate",
@@ -27,7 +27,7 @@
         ],
         "target": "v5",
         "user_files": [],
-        "version": "0.0.16"
+        "version": "0.0.17"
       },
       "kernel": {
         "location": "C:\\Users\\union\\AppData\\Roaming\\PROS\\templates\\kernel@4.1.1",
