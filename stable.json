@@ -1,3 +1,52 @@
-{
-    "Vortex": "0.0.15"
-}
+[
+  {
+    "py/object": "pros.conductor.templates.base_template.BaseTemplate",
+    "name": "Vortex",
+    "version": "0.0.15",
+    "target": "v5",
+    "supported_kernels": "^4.1.0",
+    "metadata": {
+      "location": "https://github.com/VortexLib/Vortex/releases/download/v0.0.15/Vortex@0.0.15.zip"
+    }
+  },
+  {
+    "py/object": "pros.conductor.templates.base_template.BaseTemplate",
+    "name": "Vortex",
+    "version": "0.0.14",
+    "target": "v5",
+    "supported_kernels": "^4.1.0",
+    "metadata": {
+      "location": "https://github.com/VortexLib/Vortex/releases/download/v0.0.14/Vortex@0.0.14.zip"
+    }
+  },
+  {
+    "py/object": "pros.conductor.templates.base_template.BaseTemplate",
+    "name": "Vortex",
+    "version": "0.0.13",
+    "target": "v5",
+    "supported_kernels": "^4.1.0",
+    "metadata": {
+      "location": "https://github.com/VortexLib/Vortex/releases/download/v0.0.13/Vortex@0.0.13.zip"
+    }
+  },
+  {
+    "py/object": "pros.conductor.templates.base_template.BaseTemplate",
+    "name": "Vortex",
+    "version": "0.0.12",
+    "target": "v5",
+    "supported_kernels": "^4.1.0",
+    "metadata": {
+      "location": "https://github.com/VortexLib/Vortex/releases/download/v0.0.12/Vortex@0.0.12.zip"
+    }
+  },
+  {
+    "py/object": "pros.conductor.templates.base_template.BaseTemplate",
+    "name": "Vortex",
+    "version": "0.0.11",
+    "target": "v5",
+    "supported_kernels": "^4.1.0",
+    "metadata": {
+      "location": "https://github.com/VortexLib/Vortex/releases/download/v0.0.11/Vortex@0.0.11.zip"
+    }
+  }
+]
