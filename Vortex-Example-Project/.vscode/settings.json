@@ -1,0 +1,17 @@
+{
+  "editor.inlayHints.enabled": "on",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  "C_Cpp.intelliSenseEngine": "default",
+  "C_Cpp.inlayHints.parameterNames.enabled": true,
+  "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores": false,
+  "C_Cpp.inlayHints.referenceOperator.enabled": true,
+  "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+  "C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": true,
+  "clangd.arguments": [
+    "--compile-commands-dir=.",
+    "--all-scopes-completion",
+    "--completion-style=detailed",
+    "--header-insertion=never"
+  ]
+}
