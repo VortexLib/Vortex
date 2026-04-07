@@ -134,12 +134,47 @@ else
     git rm -rf .
 fi
 
-# Set stable.json
-cat <<EOF > stable.json
-{
-    "Vortex": "${NEW_VERSION}"
+REPO_SLUG="VortexLib/Vortex"
+
+# Build the correct PROS depot format (JSON array of template objects)
+python3 -c "
+import json, sys, os
+
+depot_file = 'stable.json'
+data = []
+
+if os.path.exists(depot_file):
+    with open(depot_file, 'r') as f:
+        try:
+            loaded = json.load(f)
+            # If it's a list, use it; otherwise start fresh
+            if isinstance(loaded, list):
+                data = loaded
+        except json.JSONDecodeError:
+            pass
+
+# Remove any existing entry for this version
+data = [e for e in data if not (isinstance(e, dict) and e.get('version') == '${NEW_VERSION}')]
+
+# Add new version at the beginning
+new_entry = {
+    'py/object': 'pros.conductor.templates.base_template.BaseTemplate',
+    'name': 'Vortex',
+    'version': '${NEW_VERSION}',
+    'target': 'v5',
+    'supported_kernels': '^4.1.0',
+    'metadata': {
+        'location': 'https://github.com/${REPO_SLUG}/releases/download/v${NEW_VERSION}/Vortex@${NEW_VERSION}.zip'
+    }
 }
-EOF
+data.insert(0, new_entry)
+
+with open(depot_file, 'w') as f:
+    json.dump(data, f, indent=2)
+    f.write('\n')
+
+print(f'Depot updated with Vortex v${NEW_VERSION}')
+"
 
 git add stable.json
 git commit -m "Update depot to v$NEW_VERSION" || true
